@@ -1,0 +1,170 @@
+<!--
+Author: Joshua Rogers
+Course Code: CSCI 4000
+Program Date: July 28, 2026
+File: index.htm
+
+Purpose:
+This page allows the user to enter a minimum GPA and search
+for students with GPAs higher than the entered value. AJAX
+is used to display the search results without reloading the page.
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>joshua rogers's kung fu school</title>
+	
+	<!-- Connects this webpage to the external CSS stylesheet -->
+    <link rel="stylesheet" href="main.css?v=8">
+
+
+    <script>
+        /*
+        searchStudents()
+        Gets the minimum GPA entered by the user and uses an
+        XMLHttpRequest object to send the value to the PHP file.
+        The PHP response is displayed without reloading this page.
+        */
+        function searchStudents() {
+
+            // Get the minimum GPA entered by the user.
+            var minimumGPA =
+                document.getElementById("minimumGPA").value;
+
+            /*
+            Check that the user entered a GPA before attempting
+            to send the AJAX request.
+            */
+            if (minimumGPA === "") {
+                document.getElementById("searchResults").innerHTML =
+                    "<p>Please enter a minimum GPA.</p>";
+                return;
+            }
+
+            // Variable used to store the XMLHttpRequest object.
+            var ajaxRequest;
+
+            /*
+            Create the XMLHttpRequest object used to communicate
+            with the PHP search file.
+            */
+            try {
+                ajaxRequest = new XMLHttpRequest();
+            } catch (e) {
+                alert("Your browser does not support AJAX.");
+                return;
+            }
+
+            /*
+            Monitor the AJAX request. When the PHP request has
+            completed successfully, place the returned HTML inside
+            the searchResults div.
+            */
+            ajaxRequest.onreadystatechange = function () {
+
+                if (ajaxRequest.readyState == 4 &&
+                    ajaxRequest.status == 200) {
+
+                    document.getElementById("searchResults").innerHTML =
+                        ajaxRequest.responseText;
+                }
+            };
+
+            /*
+            Send the minimum GPA to joshua_rogers_search.php.
+            encodeURIComponent safely prepares the GPA value
+            for use in the URL.
+            */
+            ajaxRequest.open(
+                "GET",
+                "joshuarogers_search.php?gpa=" +
+                encodeURIComponent(minimumGPA),
+                true
+            );
+
+            // Send the AJAX request to the server.
+            ajaxRequest.send();
+        }
+    </script>
+
+</head>
+
+<body>
+
+<!-- Main page wrapper -->
+<div id="wrapper">
+
+    <!-- Page heading -->
+    <header>
+        <h1>Joshua Rogers Kung Fu School - Search Student</h1>
+    </header>
+
+    <!-- Main search content -->
+    <main>
+
+        <h2>Search for Students with the Minimum GPA</h2>
+
+        <!-- GPA search controls -->
+        <div class="search-form">
+
+            <label for="minimumGPA">
+                Minimum GPA:
+            </label>
+
+            <!--
+            Allows the user to enter a GPA between 0 and 4.
+            The example begins with a default value of 3.5.
+            -->
+            <input
+                type="number"
+                id="minimumGPA"
+                name="minimumGPA"
+                min="0"
+                max="4"
+                step="0.01"
+                value="3.5"
+            >
+
+            <br>
+
+            <!-- Clicking this button runs the AJAX search function. -->
+            <button type="button" onclick="searchStudents()">
+                Search
+            </button>
+
+        </div>
+
+        <!--
+        AJAX results are displayed inside this div.
+        The initial message is replaced after a successful search.
+        -->
+        <div id="searchResults">
+            <p>
+                Students with GPAs higher than the minimum GPA
+                will be displayed here.
+            </p>
+        </div>
+		
+		<!-- Link to the Question 4 Search and Split page -->
+		<p class="page-link">
+			<a href="joshua_rogers_ajaxsearch_single.htm">
+				Search &amp; Split
+			</a>
+		</p>
+
+    </main>
+
+    <!-- Page footer -->
+    <footer>
+        &copy; Joshua Rogers Kung Fu School
+    </footer>
+
+</div>
+
+</body>
+
+</html>

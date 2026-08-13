@@ -1,0 +1,306 @@
+<!--
+Author: Joshua Rogers
+Course Code: CSCI 4000
+Program Date: July 29, 2026
+Assignment: Assignment 6 - Question 4
+File: joshua_rogers_ajaxsearch_single.htm
+
+Purpose:
+This page allows the user to search for one student by studentID.
+AJAX retrieves the matching student record without reloading the
+page. JavaScript splits the returned data and places the values
+into four existing read-only textboxes.
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>joshua rogers's kung fu school</title>
+
+    <!-- External stylesheet used to format the webpage -->
+    <link rel="stylesheet" href="main.css?v=7">
+
+    <script>
+        /*
+        searchSingleStudent()
+        Sends the studentID to the PHP search file using AJAX.
+        The returned record is split into four values and placed
+        into the existing read-only output textboxes.
+        */
+        function searchSingleStudent() {
+
+            // Get the studentID entered by the user.
+            var studentID =
+                document.getElementById("studentSearchID").value;
+
+            // Get references to the four existing output textboxes.
+            var outputID =
+                document.getElementById("outputStudentID");
+
+            var outputName =
+                document.getElementById("outputName");
+
+            var outputEmail =
+                document.getElementById("outputEmail");
+
+            var outputGPA =
+                document.getElementById("outputGPA");
+
+            // Get the area used to display a status or error message.
+            var searchMessage =
+                document.getElementById("searchMessage");
+
+            /*
+            Clear the previous output before performing
+            another search.
+            */
+            outputID.value = "";
+            outputName.value = "";
+            outputEmail.value = "";
+            outputGPA.value = "";
+            searchMessage.textContent = "";
+
+            // Verify that the user entered a studentID.
+            if (studentID === "") {
+                searchMessage.textContent =
+                    "Please enter a student ID.";
+                return;
+            }
+
+            // Variable used to store the XMLHttpRequest object.
+            var ajaxRequest;
+
+            /*
+            Create the XMLHttpRequest object used to communicate
+            with the PHP file without reloading the page.
+            */
+            try {
+                ajaxRequest = new XMLHttpRequest();
+            } catch (e) {
+                searchMessage.textContent =
+                    "Your browser does not support AJAX.";
+                return;
+            }
+
+            /*
+            Process the response after the AJAX request
+            has completed.
+            */
+            ajaxRequest.onreadystatechange = function () {
+
+                if (ajaxRequest.readyState == 4) {
+
+                    if (ajaxRequest.status == 200) {
+
+                        /*
+                        Store the response from PHP. PHP returns the
+                        student data separated by double pipe symbols:
+
+                        studentID||name||email||GPA
+                        */
+                        var response =
+                            ajaxRequest.responseText.trim();
+
+                        // Handle a studentID that was not found.
+                        if (response === "NOT_FOUND") {
+                            searchMessage.textContent =
+                                "No student was found with that ID.";
+                            return;
+                        }
+
+                        // Handle an invalid studentID.
+                        if (response === "INVALID_ID") {
+                            searchMessage.textContent =
+                                "Please enter a valid student ID.";
+                            return;
+                        }
+						
+						// Handles a database error
+						if (response === "DATABASE_ERROR") {
+							searchMessage.textContent =
+								"The database search could not be completed.";
+							return;
+						}
+
+                        /*
+                        Split the returned string at each double
+                        pipe delimiter. The resulting array contains:
+
+                        studentData[0] = studentID
+                        studentData[1] = name
+                        studentData[2] = email
+                        studentData[3] = GPA
+                        */
+                        var studentData = response.split("||");
+
+                        // Verify that four values were returned.
+                        if (studentData.length == 4) {
+
+                            /*
+                            Place each returned value into one of the
+                            existing read-only textboxes. The textboxes
+                            are not recreated.
+                            */
+                            outputID.value = studentData[0];
+                            outputName.value = studentData[1];
+                            outputEmail.value = studentData[2];
+                            outputGPA.value = studentData[3];
+
+                            searchMessage.textContent =
+                                "Student record found.";
+                        } else {
+                            searchMessage.textContent =
+                                "The student record could not be displayed.";
+                        }
+
+                    } else {
+                        searchMessage.textContent =
+                            "Search error. HTTP status: " +
+                            ajaxRequest.status;
+                    }
+                }
+            };
+
+            /*
+            Send the studentID to the PHP search file.
+            The filename exactly matches the assignment requirement.
+            */
+            ajaxRequest.open(
+                "GET",
+                "joshuarogers_search_single.php?studentID=" +
+                encodeURIComponent(studentID),
+                true
+            );
+
+            // Send the AJAX request.
+            ajaxRequest.send();
+        }
+    </script>
+
+</head>
+
+<body>
+
+<!-- Main page wrapper -->
+<div id="wrapper">
+
+    <!-- Page heading -->
+    <header>
+        <h1>Joshua Rogers Kung Fu School - Search &amp; Split</h1>
+    </header>
+
+    <!-- Main page content -->
+    <main>
+
+        <h2>Search for Students by Student ID</h2>
+
+        <!-- Student search controls -->
+        <div class="single-search-form">
+
+            <label for="studentSearchID">
+                Student ID:
+            </label>
+
+            <input
+                type="number"
+                id="studentSearchID"
+                name="studentSearchID"
+                min="1"
+                step="1"
+                value="3"
+            >
+
+            <br>
+
+            <!-- Runs the AJAX student search -->
+            <button type="button" onclick="searchSingleStudent()">
+                Search
+            </button>
+
+        </div>
+
+        <!-- Search status and error messages appear here -->
+        <p id="searchMessage" aria-live="polite"></p>
+
+        <h2 class="output-heading">
+            Student Information
+        </h2>
+
+        <p>
+            Student information will be displayed in the
+            read-only textboxes below.
+        </p>
+
+        <!--
+        Existing output textboxes. JavaScript places retrieved
+        values into these fields without recreating them.
+        -->
+        <div class="student-output">
+
+			<div class="output-row">
+				<label for="outputStudentID">Student ID:</label>
+
+				<input
+					type="text"
+					id="outputStudentID"
+					name="outputStudentID"
+					readonly
+				>
+			</div>
+
+			<div class="output-row">
+				<label for="outputName">Student Name:</label>
+
+				<input
+					type="text"
+					id="outputName"
+					name="outputName"
+					readonly
+				>
+			</div>
+
+			<div class="output-row">
+				<label for="outputEmail">Email:</label>
+
+				<input
+					type="email"
+					id="outputEmail"
+					name="outputEmail"
+					readonly
+				>
+			</div>
+
+			<div class="output-row">
+				<label for="outputGPA">GPA:</label>
+
+				<input
+					type="text"
+					id="outputGPA"
+					name="outputGPA"
+					readonly
+				>
+			</div>
+
+		</div>
+
+        <!-- Returns the user to the Question 3 page -->
+        <p class="page-link">
+            <a href="index.htm">Back to First Page</a>
+        </p>
+
+    </main>
+
+    <!-- Page footer -->
+    <footer>
+        &copy; Joshua Rogers Kung Fu School
+    </footer>
+
+</div>
+
+</body>
+
+</html>

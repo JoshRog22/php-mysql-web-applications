@@ -1,0 +1,329 @@
+/*
+Author: Joshua Rogers
+Course: CSCI 4000-W01
+Date: 07/28/2026
+Assignment 6
+File: main.css
+
+Purpose:
+This stylesheet formats the AJAX student GPA search page.
+It controls the page layout, headings, search form, student
+results table, and footer.
+*/
+
+/* Styles the entire page background and default font */
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0f172a;
+    color: #e5e7eb;
+}
+
+/* Main page container */
+#wrapper {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #111827;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.30);
+    overflow: hidden;
+}
+
+/* Header area */
+header {
+    padding: 22px;
+    background-color: #1f2937;
+    border-bottom: 2px solid #38bdf8;
+}
+
+/* Main page heading */
+h1 {
+    margin: 0;
+    text-align: center;
+    color: #38bdf8;
+    font-size: 34px;
+}
+
+/* Main content area */
+main {
+    padding: 30px 40px 40px;
+}
+
+/* Search section heading */
+h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #facc15;
+    font-size: 26px;
+}
+
+/* Search form area */
+.search-form {
+    margin-bottom: 35px;
+}
+
+/* Minimum GPA label */
+.search-form label {
+    display: inline-block;
+    width: 145px;
+    font-weight: bold;
+    color: #e5e7eb;
+}
+
+/* Minimum GPA input box */
+input[type="number"] {
+    width: 180px;
+    padding: 8px;
+    font-size: 16px;
+    color: #f9fafb;
+    background-color: #1f2937;
+    border: 1px solid #64748b;
+    border-radius: 6px;
+}
+
+/* GPA input focus effect */
+input[type="number"]:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 7px rgba(56, 189, 248, 0.65);
+}
+
+/* Search button */
+button {
+    margin-left: 150px;
+    margin-top: 14px;
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #111827;
+    background-color: #38bdf8;
+    border: 1px solid #38bdf8;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Search button hover effect */
+button:hover {
+    background-color: #facc15;
+    border-color: #facc15;
+}
+
+/* AJAX search results area */
+#searchResults {
+    margin-top: 25px;
+}
+
+/* Student results heading */
+#searchResults h2 {
+    margin-bottom: 18px;
+    color: #facc15;
+    font-size: 22px;
+}
+
+/* Student results table */
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    background-color: #1f2937;
+    border: 2px solid #38bdf8;
+}
+
+/* Table header and data cells */
+th,
+td {
+    padding: 10px;
+    border: 1px solid #64748b;
+    text-align: center;
+}
+
+/* Table header */
+th {
+    color: #111827;
+    background-color: #38bdf8;
+    font-weight: bold;
+}
+
+/* Table data */
+td {
+    color: #e5e7eb;
+}
+
+/* Footer area */
+footer {
+    padding: 16px 25px;
+    background-color: #1f2937;
+    border-top: 2px solid #38bdf8;
+    text-align: right;
+    color: #38bdf8;
+    font-size: 15px;
+}
+
+/*
+Assignment 6 - Question 3
+Styles for the AJAX GPA search form.
+*/
+
+/* Search form spacing */
+.search-form {
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+/* GPA input label */
+.search-form label {
+    display: inline-block;
+    width: 140px;
+    font-weight: bold;
+    color: #facc15;
+}
+
+/* GPA number input */
+input[type="number"] {
+    width: 180px;
+    padding: 8px;
+    font-size: 16px;
+    color: #f9fafb;
+    background-color: #1f2937;
+    border: 1px solid #64748b;
+    border-radius: 8px;
+}
+
+/* GPA input focus effect */
+input[type="number"]:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+}
+
+/* Search button */
+.search-form button {
+    width: auto;
+    margin-top: 15px;
+    margin-left: 140px;
+    padding: 7px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #111827;
+    background-color: #e5e7eb;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Search button hover effect */
+.search-form button:hover {
+    background-color: #facc15;
+}
+
+/* AJAX result area */
+#searchResults {
+    margin-top: 30px;
+    min-height: 80px;
+}
+
+/*
+Assignment 6 - Question 4
+Styles for the single-student AJAX Search and Split page.
+*/
+
+/* Formats the studentID search controls */
+.single-search-form {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+/* Formats the studentID search label */
+.single-search-form label {
+    display: inline-block;
+    width: 145px;
+    font-weight: bold;
+    color: #facc15;
+}
+
+/* Formats the Question 4 search button */
+.single-search-form button {
+    margin-top: 15px;
+    margin-left: 149px;
+    padding: 8px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #111827;
+    background-color: #e5e7eb;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Changes the search button color when hovered */
+.single-search-form button:hover {
+    background-color: #facc15;
+}
+
+/* Formats the status message returned after a search */
+#searchMessage {
+    min-height: 22px;
+    margin-bottom: 25px;
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+/* Adds spacing above the student output section */
+.output-heading {
+    margin-top: 20px;
+}
+
+/* Controls the width of the output form area */
+.student-output {
+    max-width: 600px;
+    margin-top: 25px;
+}
+
+/* Places each output label and textbox on one row */
+.output-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+/* Formats the labels beside the output textboxes */
+.output-row label {
+    width: 145px;
+    font-weight: bold;
+    color: #e5e7eb;
+}
+
+/* Formats the four read-only output textboxes */
+.output-row input {
+    width: 330px;
+    padding: 9px;
+    font-size: 16px;
+    color: #e5e7eb;
+    background-color: #1f2937;
+    border: 1px solid #64748b;
+    border-radius: 8px;
+}
+
+/* Distinguishes the read-only output fields */
+.output-row input[readonly] {
+    cursor: default;
+}
+
+/* Formats navigation links between Questions 3 and 4 */
+.page-link {
+    margin-top: 40px;
+}
+
+/* Formats the link text */
+.page-link a {
+    color: #38bdf8;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Changes link color when hovered */
+.page-link a:hover {
+    color: #facc15;
+}
