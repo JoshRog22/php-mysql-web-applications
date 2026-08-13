@@ -1,0 +1,315 @@
+/*
+Author: Joshua Rogers
+Course: CSCI 4000-W01
+Date: 07/25/2026
+Assignment 5 - question 4
+File: main.css
+
+Purpose:
+This stylesheet formats the assignment 5 MVC pages
+*/
+
+
+/* Styles the entire page background and default font */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0f172a;
+    color: #e5e7eb;
+}
+
+
+/* Main page container */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 35px;
+    background-color: #111827;
+    border: 2px solid #38bdf8;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+
+/* Main page heading */
+h1 {
+    margin-top: 0;
+    text-align: center;
+    color: #38bdf8;
+    font-size: 38px;
+    border-bottom: 3px solid #38bdf8;
+    padding-bottom: 18px;
+}
+
+
+/* Section headings */
+h2 {
+    margin-top: 30px;
+    color: #facc15;
+    font-size: 28px;
+}
+
+
+/* Smaller headings used for majors and selected major */
+h3 {
+    margin-top: 10px;
+    color: #facc15;
+    font-size: 23px;
+}
+
+
+/* Holds the major navigation and student list side by side */
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+}
+
+
+/* Major navigation area */
+aside {
+    width: 220px;
+    flex-shrink: 0;
+    padding: 20px;
+    background-color: #1f2937;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+}
+
+
+/* Removes default list formatting from the majors list */
+aside ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+/* Adds spacing between major links */
+aside li {
+    margin-bottom: 12px;
+}
+
+
+/* Student list area */
+.student-section {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* Student table */
+table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #1f2937;
+    border: 2px solid #38bdf8;
+}
+
+
+/* Table cells */
+th,
+td {
+    padding: 10px;
+    border: 1px dashed #38bdf8;
+    text-align: center;
+}
+
+
+/* Table header */
+th {
+    color: #0f172a;
+    background-color: #38bdf8;
+    font-weight: bold;
+}
+
+
+/* Table data */
+td {
+    color: #e5e7eb;
+}
+
+
+/* Prevents forms inside table cells from adding extra spacing */
+td form {
+    margin: 0;
+}
+
+
+/* General button appearance */
+button,
+input[type="submit"] {
+    width: auto;
+    padding: 7px 14px;
+    font-size: 14px;
+    color: #111827;
+    background-color: #e5e7eb;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* Button hover effect */
+button:hover,
+input[type="submit"]:hover {
+    background-color: #facc15;
+}
+
+
+/* All page links */
+a {
+    color: #38bdf8;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* Link hover effect */
+a:hover {
+    color: #facc15;
+}
+
+
+/* Links shown below the student table */
+.action-links {
+    margin-top: 30px;
+}
+
+
+/* Adds space between action links */
+.action-links p {
+    margin: 14px 0;
+}
+
+
+/* Footer area */
+footer {
+    margin-top: 35px;
+    padding-top: 18px;
+    border-top: 2px solid #38bdf8;
+    text-align: right;
+    color: #38bdf8;
+    font-size: 15px;
+}
+
+
+/* Text, email, and select form controls */
+input[type="text"],
+input[type="email"],
+select {
+    display: block;
+    width: 300px;
+    margin-bottom: 18px;
+    padding: 10px;
+    font-size: 16px;
+    color: #f9fafb;
+    background-color: #1f2937;
+    border: 1px solid #64748b;
+    border-radius: 8px;
+}
+
+
+/* Form control focus effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+}
+
+
+/* Form labels */
+form label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #facc15;
+}
+
+
+/* Database error message area */
+.error-message {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #1f2937;
+    border: 2px solid #facc15;
+    border-radius: 10px;
+}
+
+
+/* Database error page heading */
+.error-message h2 {
+    margin-top: 0;
+}
+
+
+/* Allows the page to stack vertically on narrower screens */
+@media screen and (max-width: 750px) {
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .content {
+        display: block;
+    }
+
+    aside {
+        width: auto;
+        margin-bottom: 30px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+        width: 90%;
+    }
+}
+
+/* Adds spacing above the Add Student button */
+form button {
+    margin-top: 8px;
+}
+
+/* Makes the major list table narrower than the student table */
+.major-table {
+    width: 65%;
+    margin-left: 0;
+}
+
+
+/* Aligns the major name text to the left */
+.major-table td:first-child,
+.major-table th:first-child {
+    text-align: left;
+}
+
+
+/* Adds spacing above the Add Major section */
+.add-major-section {
+    margin-top: 35px;
+}
+
+
+/* Keeps the Add Major form controls on one line */
+.add-major-section form {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+
+/* Removes unnecessary bottom space from the major input */
+.add-major-section input[type="text"] {
+    margin-bottom: 0;
+}
+
+
+/* Removes unnecessary bottom space from the Add button */
+.add-major-section button {
+    margin-top: 0;
+}
