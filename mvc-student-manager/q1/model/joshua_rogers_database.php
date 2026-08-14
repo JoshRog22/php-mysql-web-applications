@@ -1,14 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Program Date: July 25, 2026
-File: joshua_rogers_database.php
-
-Purpose:
-This model file creates a PDO connection to the
-joshua_rogers_student_db database. If the connection fails,
-the database error view is displayed.
 */
 
 
