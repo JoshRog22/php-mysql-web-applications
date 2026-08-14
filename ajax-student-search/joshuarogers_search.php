@@ -1,8 +1,7 @@
 <?php
 /*
 Author: Joshua Rogers
-Course Code: CSCI 4000
-Program Date: July 28, 2026
+
 Purpose: Retrieves students with GPAs higher than the minimum
          GPA entered by the user.
 */
