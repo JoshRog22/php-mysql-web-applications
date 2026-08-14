@@ -1,14 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Program Date: July 25, 2026
-File: index.php
-
-Purpose:
-This file acts as the student manager controller.
-It receives an action, calls the appropriate model function,
-and prepares data for display.
 */
 
 
