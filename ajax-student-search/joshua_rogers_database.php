@@ -1,10 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Date: 07/04/2026
-Assignment 3 - Question 2
-File: joshua_rogers_database.php
 
 Purpose:
 This file connects to the MySQL database using PDO.
