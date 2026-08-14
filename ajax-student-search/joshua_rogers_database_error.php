@@ -1,10 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Date: 07/04/2026
-Assignment 3 - Question 2
-File: joshua_rogers_database_error.php
 
 Purpose:
 This page displays a database connection error message.
