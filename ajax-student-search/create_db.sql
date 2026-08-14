@@ -1,10 +1,6 @@
 /*
 ================================
 Author: Joshua Rogers
-Course Code: CSCI 4000
-Assignment: Assignment 6 Question 1
-Program Date: July 28, 2026
-File: create_db.sql
 
 Purpose:
 This SQL script creates the assignment database,
