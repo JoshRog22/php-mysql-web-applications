@@ -39,7 +39,7 @@ INSERT INTO student (name, email, GPA) VALUES
 ('OOGWAY KIM', 'oogway@gmail.com', 1.53),
 ('PING HONG', 'pinghong@gmail.com', 2.52);
 
--- Create the database user
+-- Create a local application database user
 DROP USER IF EXISTS 'joshuaweb'@'localhost';
 
 CREATE USER 'joshuaweb'@'localhost'
