@@ -1,10 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course Code: CSCI 4000
-Program Date: July 29, 2026
-Assignment: Assignment 6 - Question 4
-File: joshuarogers_search_single.php
 
 Purpose:
 This PHP file receives a studentID from an AJAX request,
