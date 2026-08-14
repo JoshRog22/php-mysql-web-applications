@@ -1,8 +1,5 @@
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Program Date: July 26, 2026
-File Name: create_db.sql
 
 Purpose:
 This SQL file creates the Assignment 4 & 5 student database,
