@@ -1,9 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Program Date: July 26, 2026
-File: joshua_rogers_student_add.php
 
 Purpose:
 This view file displays a form that allows users
