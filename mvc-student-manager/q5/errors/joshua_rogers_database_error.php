@@ -1,9 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Program Date: July 25, 2026
-File: joshua_rogers_database_error.php
 
 Purpose:
 This error view displays a database connection error.
