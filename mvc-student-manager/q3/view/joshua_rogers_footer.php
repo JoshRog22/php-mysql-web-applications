@@ -1,9 +1,6 @@
 <?php
 /*
 Author: Joshua Rogers
-Course: CSCI 4000-W01
-Program Date: July 25, 2026
-File: joshua_rogers_footer.php
 
 Purpose:
 This view file contains the common footer used by
